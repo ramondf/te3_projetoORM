@@ -21,4 +21,12 @@ public class cidadeDAO extends genericDAO{
                 Cidade.getSigla());
         return (Cidade.getCodigo());
     }
+    
+    public int updateCidade(cidade Cidade) throws SQLException{
+        String SQL="UPDATE CIDADE SET NM_CIDADE=?, DS_SIGLA=? "
+                + "WHERE CD_CIDADE=?";
+        return super.executeUpdate(SQL, Cidade.getNome(),
+                Cidade.getSigla(),
+                Cidade.getCodigo());
+    }
 }
