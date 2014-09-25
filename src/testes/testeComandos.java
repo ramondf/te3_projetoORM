@@ -17,9 +17,10 @@ public class testeComandos {
             //ps.execute();
             //System.out.println("Comando SQL executado."); 
             cidadeDAO dao = new cidadeDAO();
-            dao.addCidade(new cidade(0, "Criciúma", "SC"));
-            dao.addCidade(new cidade(0, "São Paulo", "SP"));
-            dao.addCidade(new cidade(0, "Içara", "SC"));
+            //dao.addCidade(new cidade(0, "Criciúma", "SC"));
+            //dao.addCidade(new cidade(0, "São Paulo", "SP"));
+            //dao.addCidade(new cidade(0, "Içara", "SC"));
+            dao.updateCidade(new cidade(2, "ribeirão preto", "sp"));
        } catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex.getMessage());
         }
