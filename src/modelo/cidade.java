@@ -9,8 +9,8 @@ public class cidade implements java.io.Serializable{
 
     public cidade(int codigo, String nome, String sigla) {
         this.codigo = codigo;
-        this.nome = nome;
-        this.sigla = sigla;
+        this.setNome(nome);
+        this.setSigla(sigla);
     }
 
     public int getCodigo() {

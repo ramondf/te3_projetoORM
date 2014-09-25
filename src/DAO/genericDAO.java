@@ -32,7 +32,7 @@ public abstract class genericDAO {
     }
     
     public int getProximo(String tabela, String pk) throws SQLException{
-        String SQL="SELECT MAX ("+pk+") AS MAIOR FROM "+tabela;
+        String SQL="SELECT MAX("+pk+") AS MAIOR FROM "+tabela;
         ResultSet rs = executeQuery(SQL);
         int codigo = (rs.next() ? rs.getInt("MAIOR") : 0);
         return (++codigo);
