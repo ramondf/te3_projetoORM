@@ -16,6 +16,9 @@ public class cidadeDAO extends genericDAO{
     public int addCidade(cidade Cidade) throws SQLException{
         Cidade.setCodigo(super.getProximo("CIDADE", "CD_CIDADE"));
         String SQL="INSERT INTO CIDADE VALUES(?,?,?)";
+        super.executeUpdate(SQL, Cidade.getCodigo(),
+                Cidade.getNome(),
+                Cidade.getSigla());
         return (Cidade.getCodigo());
     }
 }
