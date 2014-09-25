@@ -20,7 +20,19 @@ public class testeComandos {
             //dao.addCidade(new cidade(0, "Criciúma", "SC"));
             //dao.addCidade(new cidade(0, "São Paulo", "SP"));
             //dao.addCidade(new cidade(0, "Içara", "SC"));
-            dao.updateCidade(new cidade(2, "ribeirão preto", "sp"));
+            
+           /* dao.addCidade(new cidade(0, "Excluir", "sc"));
+            System.out.println(dao.removeCidade(new cidade(4, "asa", "sc"))
+            ? "foi removido"
+                    : "não remoido") ;
+            
+            int numero = dao.updateCidade(new cidade(99, "ribeirão preto", "sp"));
+            System.out.println("Atualizados: "+numero); */
+            cidade Cidade = dao.getCidade(3);
+            System.out.println(Cidade.getCodigo()+"\t"+
+                    Cidade.getNome()+"\t"+
+                    Cidade.getSigla());          
+            
        } catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex.getMessage());
         }

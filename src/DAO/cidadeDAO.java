@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.cidade;
 
@@ -28,5 +29,26 @@ public class cidadeDAO extends genericDAO{
         return super.executeUpdate(SQL, Cidade.getNome(),
                 Cidade.getSigla(),
                 Cidade.getCodigo());
+    }
+    
+    public boolean removeCidade(cidade Cidade) throws SQLException{
+        String SQL="DELETE FROM CIDADE WHERE CD_CIDADE=?";
+        return (super.executeUpdate(SQL, Cidade.getCodigo()) > 0);
+    }
+    
+    public cidade getCidade(int pk) throws SQLException{
+        cidade Cidade = null;
+        String SQL = "SELECT * FROM CIDADE WHERE CD_CIDADE=?";
+        ResultSet rs = super.executeQuery(SQL, pk);
+        if (rs.next()){
+            Cidade = populateCidade(rs);
+        }
+        return Cidade;
+    }
+    
+    public static cidade populateCidade(ResultSet rs) throws SQLException{
+        return (new cidade(rs.getInt("CD_CIDADE"),
+        rs.getString("NM_CIDADE"),
+        rs.getString("DS_SIGLA")));
     }
 }
