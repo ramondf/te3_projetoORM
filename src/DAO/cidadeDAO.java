@@ -58,6 +58,17 @@ public class cidadeDAO extends genericDAO{
         
         return list;
     }
+    
+    public List<cidade> getCidadeList(String procura) throws SQLException{
+        List<cidade> list = new LinkedList<>();
+        String SQL="SELECT * FROM CIDADE WHERE NM_CIDADE LIKE ? ORDER BY NM_CIDADE";
+        ResultSet rs = super.executeQuery(SQL, procura);
+        while(rs.next()){
+            list.add(populateCidade(rs));
+        }
+        return list;
+    }
+    
     public static cidade populateCidade(ResultSet rs) throws SQLException{
         return (new cidade(rs.getInt("CD_CIDADE"),
         rs.getString("NM_CIDADE"),

@@ -3,6 +3,8 @@ package testes;
 import DAO.cidadeDAO;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import modelo.cidade;
 
 public class testeComandos {
@@ -28,10 +30,26 @@ public class testeComandos {
             
             int numero = dao.updateCidade(new cidade(99, "ribeirão preto", "sp"));
             System.out.println("Atualizados: "+numero); */
-            cidade Cidade = dao.getCidade(3);
+          
+            /*cidade Cidade = dao.getCidade(3);
             System.out.println(Cidade.getCodigo()+"\t"+
                     Cidade.getNome()+"\t"+
-                    Cidade.getSigla());          
+                    Cidade.getSigla());          */
+            
+            /*List<cidade> list = dao.getCidadeList();
+            for (cidade objeto:list){
+                System.out.println(objeto.getCodigo()+"\t"+
+                        objeto.getNome()+"\t"+
+                        objeto.getSigla());
+            }*/
+            
+            List<cidade> list = dao.getCidadeList("%CRI%");
+            for (cidade objeto:list){
+                System.out.println(objeto.getCodigo()+"\t"+
+                        objeto.getNome()+"\t"+
+                        objeto.getSigla());
+            }
+            
             
        } catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex.getMessage());
