@@ -2,6 +2,8 @@ package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import modelo.cidade;
 
 public class cidadeDAO extends genericDAO{
@@ -46,10 +48,19 @@ public class cidadeDAO extends genericDAO{
         return Cidade;
     }
     
+    public List<cidade> getCidadeList() throws SQLException{
+        List<cidade> list = new LinkedList<>();
+        String SQL="SELECT * FROM CIDADE ORDER BY NM_CIDADE";
+        ResultSet rs = super.executeQuery(SQL);
+        while (rs.next()){
+            list.add(populateCidade(rs));
+        }
+        
+        return list;
+    }
     public static cidade populateCidade(ResultSet rs) throws SQLException{
         return (new cidade(rs.getInt("CD_CIDADE"),
         rs.getString("NM_CIDADE"),
-        rs.getString("DS_SIGLA")));
-        
+        rs.getString("DS_SIGLA")));        
     }
 }
