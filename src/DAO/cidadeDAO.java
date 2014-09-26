@@ -50,5 +50,6 @@ public class cidadeDAO extends genericDAO{
         return (new cidade(rs.getInt("CD_CIDADE"),
         rs.getString("NM_CIDADE"),
         rs.getString("DS_SIGLA")));
+        
     }
 }
