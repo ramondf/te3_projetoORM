@@ -1,8 +1,6 @@
 package testes;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 public class testeFuncionario {
     public static void main(String[] args) {
         String SQL="CREATE TABLE FUNCIONARIO ("
@@ -21,7 +19,6 @@ public class testeFuncionario {
             
        } catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex.getMessage());
-        }
-        
+        }  
     }
 }
