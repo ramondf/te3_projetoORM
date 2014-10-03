@@ -3,6 +3,7 @@ import DAO.cidadeDAO;
 import DAO.funcionarioDAO;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import modelo.cidade;
 import modelo.funcionario;
 public class testeFuncionario {
@@ -29,11 +30,33 @@ public class testeFuncionario {
             System.out.println("Comando SQL executado."); */
             
             //Atualizar
-            System.out.println(dao.updateFuncionario(new funcionario(1, 
+            /*System.out.println(dao.updateFuncionario(new funcionario(1, 
                     "outro nome",
                     "outro endereço",
                     999,
-                    new cidadeDAO().getCidade(3))));
+                    new cidadeDAO().getCidade(3))));*/
+            // deletar
+           // System.out.println(dao.removeFuncionario(new funcionario(15, "a", "a", 1, new cidadeDAO().getCidade(1))));
+            //select por FK
+            /*funcionario f = dao.getFuncionario(2);
+            if (f == null){
+                System.out.println("nao existe");
+            }
+            else{
+                System.out.println(f.getCodigo()+"\t"+
+                        f.getNome()+"\t"+
+                        f.getEndereco()+"t"+
+                        f.getSalario()+"\t"+
+                        f.getCidade().getNome()+"-"+
+                        f.getCidade().getSigla());
+            }*/
+            List<funcionario> list = dao.getFuncionarioList();
+            for (funcionario objeto: list){
+                System.out.println(objeto.getCodigo()+"\t"+
+                        objeto.getNome()+"\t"+
+                        objeto.getSalario()+"\t"+
+                        objeto.getCidade().getNome());
+            }
             
        } catch (SQLException ex) {
             System.out.println("Erro SQL: "+ex.getMessage());

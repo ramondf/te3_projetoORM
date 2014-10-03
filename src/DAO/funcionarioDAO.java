@@ -1,6 +1,9 @@
 package DAO;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import modelo.funcionario;
 
 public class funcionarioDAO extends genericDAO{
@@ -34,5 +37,35 @@ public class funcionarioDAO extends genericDAO{
         String SQL="DELETE FROM FUNCIONARIO WHERE CD_FUNCIONARIO=?";
         return (super.executeUpdate(SQL, Funcionario.getCodigo())>0);
         
+    }
+    
+    public funcionario getFuncionario (int pk) throws SQLException{
+        String SQL="SELECT * FROM FUNCIONARIO WHERE CD_FUNCIONARIO=?";
+        ResultSet rs = super.executeQuery(SQL, pk);
+        funcionario retorno =null;
+        
+        if (rs.next()){
+            retorno=populateFuncionario(rs);
+        }
+        return (retorno);
+    }
+    
+    public List<funcionario> getFuncionarioList() throws SQLException{
+        String SQL="SELECT * FROM FUNCIONARIO ORDER BY NM_FUNCIONARIO";
+        List<funcionario> lista = new LinkedList<>();
+        ResultSet rs = super.executeQuery(SQL);
+        while(rs.next()){
+            lista.add(populateFuncionario(rs));
+        }
+        return (lista);
+    }
+    
+    public static funcionario populateFuncionario(ResultSet rs) throws SQLException{
+        return (new funcionario(
+        rs.getInt("CD_FUNCIONARIO"),
+                rs.getString("NM_FUNCIONARIO"),
+                rs.getString("DS_ENDERECO"),
+                rs.getDouble("VL_SALARIO"),
+                new cidadeDAO().getCidade(rs.getInt("CD_CIDADE"))));
     }
 }
