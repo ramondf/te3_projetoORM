@@ -58,6 +58,7 @@ public class cidade implements java.io.Serializable{
         }
         return true;
     }
-    
-    
+     public String toString(){
+         return (this.getCodigo()+"-"+this.getNome()+"-"+this.getSigla());
+     }   
 }
