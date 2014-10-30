@@ -1,0 +1,17 @@
+classe (modelo), implements
+
+construtor (vazio e depois selecionado as propriedades do objeto)
+set
+get
+toString
+Equals
+hascode
+
+
+#############################
+
+ENUM
+
+Criar classe enum
+alterar objeto(modelo)
+alterar DAO
